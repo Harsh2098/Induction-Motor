@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Induction Machine</string>
+    <string name="delta">DELTA</string>
+    <string name="star">STAR</string>
+    <string name="rated_voltage">Rated Voltage</string>
+    <string name="rated_current">Rated Current</string>
+    <string name="no_load_test">No-Load Test</string>
+    <string name="blocked_rotor_test">Blocked Rotor test</string>
+    <string name="current">Current</string>
+    <string name="input_power">Input Power</string>
+    <string name="stator_resistance">Stator Resistance</string>
+</resources>
