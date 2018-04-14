@@ -7,6 +7,12 @@
     <string name="no_load_test">No-Load Test</string>
     <string name="blocked_rotor_test">Blocked Rotor test</string>
     <string name="current">Current</string>
-    <string name="input_power">Input Power</string>
+    <string name="input_power">Input Power (W)</string>
     <string name="stator_resistance">Stator Resistance</string>
+    <string name="rated_power">Rated Power (kW)</string>
+    <string name="rated_speed">Rated Speed</string>
+    <string name="slip">Slip</string>
+    <string name="efficiency">Efficiency</string>
+    <string name="calculate">Calculate</string>
+    <string name="voltage_at_i_rat">Voltage at I(rat)</string>
 </resources>
