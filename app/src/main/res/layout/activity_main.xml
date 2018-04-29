@@ -115,15 +115,15 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/ratedPower_editText"
+                    android:id="@+id/poles_editText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="@string/rated_power"
+                    android:hint="@string/poles"
                     android:inputType="numberDecimal"
                     android:maxLength="30"
                     android:maxLines="1"
-                    android:text="11"
+                    android:text="4"
                     android:textSize="16sp" />
 
             </android.support.design.widget.TextInputLayout>
@@ -300,17 +300,41 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Stator Copper Loss"
+            android:text="Shaft Torque"
             android:textColor="@android:color/background_dark"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/statorCopperLoss_textView"
+            android:id="@+id/shaftTorque_textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:textColor="@android:color/background_dark"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Magnetizing Reactance"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/magnetizingReactance_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:textColor="@android:color/background_dark"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -326,7 +350,7 @@
             android:layout_weight="2"
             android:text="Rotor Reactance"
             android:textColor="@android:color/background_dark"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/rotorReactance_textView"
@@ -334,7 +358,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:textColor="@android:color/background_dark"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -350,7 +374,7 @@
             android:layout_weight="2"
             android:text="Rotor Resistance"
             android:textColor="@android:color/background_dark"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/rotorResistance_textView"
@@ -358,7 +382,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:textColor="@android:color/background_dark"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 
@@ -374,7 +398,7 @@
             android:layout_weight="2"
             android:text="@string/efficiency"
             android:textColor="@android:color/background_dark"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/efficiency_textView"
@@ -382,7 +406,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:textColor="@android:color/background_dark"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
     </LinearLayout>
 

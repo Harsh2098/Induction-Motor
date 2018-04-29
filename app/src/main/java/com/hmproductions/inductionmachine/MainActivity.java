@@ -2,7 +2,6 @@ package com.hmproductions.inductionmachine;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
@@ -28,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.ratedSpeed_editText)
     EditText ratedSpeedEditText;
 
-    @BindView(R.id.ratedPower_editText)
-    EditText ratedPowerEditText;
+    @BindView(R.id.poles_editText)
+    EditText polesEditText;
 
     @BindView(R.id.slip_editText)
     EditText slipEditText;
@@ -50,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
     EditText blockedVoltageEditText;
 
     // Binding text views
-    @BindView(R.id.statorCopperLoss_textView)
-    TextView statorCopperLossTextView;
+    @BindView(R.id.shaftTorque_textView)
+    TextView shaftTorqueTextView;
 
     @BindView(R.id.rotorResistance_textView)
     TextView rotorResistanceTextView;
@@ -62,15 +61,16 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.efficiency_textView)
     TextView efficiencyTextView;
 
-    double blockedCurrent, noloadCurrent, slip, statorResistance;
+    @BindView(R.id.magnetizingReactance_textView)
+    TextView magnetizingReactance;
 
-    double blockedVoltage, noloadVoltage, ratedPower;
+    double blockedCurrent, noloadCurrent, slip, statorResistance;
+    double blockedVoltage, noloadVoltage, poles;
     double blockedInput, noLoadInput;
 
-    double Xm, Rw, Zsh, Rt1, Xt1, Zt1, R2_, Rl, I1;
-
     // Computed parameters
-    double statorCopperLoss;
+    double Znl, Rnl, Xnl, rotationalLoss, Zbr, Rbr, Xbr, x1, x2, r1, r2, Xm, X2, wS;
+    double Ve, Re, Xe, I2, Pm, Tshaft, Pshaft, totalLoss, efficiency;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,8 +97,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void calculateParameters() {
-        statorResistance = Double.parseDouble(statorResistanceEditText.getText().toString());
-        ratedPower = Double.parseDouble(ratedPowerEditText.getText().toString());
+
+        statorResistance = Double.parseDouble(statorResistanceEditText.getText().toString()) * 1.2;
+        poles = Double.parseDouble(polesEditText.getText().toString());
 
         blockedInput = Double.parseDouble(blockedInputEditText.getText().toString());
         noLoadInput = Double.parseDouble(noLoadInputEditText.getText().toString());
@@ -111,44 +112,57 @@ public class MainActivity extends AppCompatActivity {
         blockedVoltage = Double.parseDouble(blockedVoltageEditText.getText().toString());
 
         // Calculating parameters
+        blockedCurrent /= Math.sqrt(3);
+        noloadCurrent /= Math.sqrt(3);
+        
+        // Taking frequency as 50Hz
+        wS = 200 / poles;
 
-        if (configurationRadioGroup.getCheckedRadioButtonId() == R.id.delta_radioButton) {
-            blockedCurrent /= Math.sqrt(3);
-            noloadCurrent /= Math.sqrt(3);
-        } else {
-            blockedVoltage /= Math.sqrt(3);
-            noloadVoltage /= Math.sqrt(3);
-        }
+        Znl = noloadVoltage / noloadCurrent;
+        Rnl = noLoadInput / (3 * Math.pow(noloadCurrent, 2));
+        Xnl = Math.sqrt(Math.pow(Znl, 2) - Math.pow(Rnl, 2));
 
-        statorCopperLoss = 3 * Math.pow(noloadCurrent,2) * statorResistance;
+        rotationalLoss = noLoadInput  - 3 * Math.pow(noloadCurrent, 2) * statorResistance;
 
-        noLoadInput -= statorCopperLoss;
+        Zbr = blockedVoltage / blockedCurrent;
+        Rbr = blockedInput / (3 * Math.pow(blockedCurrent, 2));
+        Xbr = Math.sqrt(Math.pow(Zbr, 2) - Math.pow(Rbr, 2));
 
-        Rw = (3 * Math.pow(noloadVoltage, 2)) / noLoadInput;
-        Zsh = noloadVoltage / noloadCurrent;
-        Xm = Math.sqrt(Math.pow(Zsh, 2) - Math.pow(Rw, 2));
+        x1 = x2 = Xbr / 2;
+        Xm = Xnl - x1;
+        X2 = Xm + x2;
 
-        Rt1 = blockedInput / (3 * Math.pow(blockedCurrent, 2));
-        Zt1 = blockedVoltage / blockedCurrent;
-        Xt1 = Math.sqrt(Math.pow(Zt1, 2) - Math.pow(Rt1, 2));
+        r1 = statorResistance;
+        r2 = (Rbr - r1) * Math.pow(X2 / Xm, 2);
 
-        R2_ = Rt1 - statorResistance;
-        Rl = (R2_ / slip) - R2_;
-
-        String temp = ": " + String.format(Locale.ENGLISH, "%.3f",statorCopperLoss) + " W";
-        statorCopperLossTextView.setText(temp);
-
-        temp = ": " + String.format(Locale.ENGLISH, "%.3f", Rt1) + " ohm";
+        String temp = ": " + String.format(Locale.ENGLISH, "%.3f", r2) + " ohm";
         rotorResistanceTextView.setText(temp);
 
-        temp = ": " + String.format(Locale.ENGLISH, "%.3f", Xt1) + " ohm";
+        temp = ": " + String.format(Locale.ENGLISH, "%.3f", Xm) + " ohm";
+        magnetizingReactance.setText(temp);
+
+        temp = ": " + String.format(Locale.ENGLISH, "%.3f", x2) + " ohm";
         rotorReactanceTextView.setText(temp);
 
-        I1 = noloadVoltage/(Rl + Rt1) + noloadVoltage/Rw;
+        // Calculating efficiency
+        Ve = (noloadVoltage * Xm) / (Xm + x1);
+        Re = (r1 * Xm) / (Xm + x1);
+        Xe = (x1 * Xm) / (Xm + x1);
 
-        Log.v(":::", "output power" + 3 * noloadVoltage * I1 * 0.001);
+        I2 = Ve / (Math.sqrt(Math.pow(Re + r2/slip, 2) + Math.pow(Xe + x2, 2)));
+        Pm = 3 * Math.pow(I2, 2) * r2 * (1 - slip) / slip;
 
-        temp = ": " + String.format(Locale.ENGLISH, "%.3f", (ratedPower / (3 * noloadVoltage * I1 * 0.001)) * 100) + " %";
+        Pshaft = (Pm - rotationalLoss ) / 1000;
+        Tshaft = Pshaft / ((1 - slip) * wS);
+
+        totalLoss = rotationalLoss + 3 * Math.pow(I2, 2) * (r1 + r2);
+
+        efficiency = Pm / (Pm + totalLoss);
+
+        temp = ": " + String.format(Locale.ENGLISH, "%.3f", efficiency * 100) + " %";
         efficiencyTextView.setText(temp);
+
+        temp = ": " + String.format(Locale.ENGLISH, "%.3f", Pshaft) + " Nm";
+        shaftTorqueTextView.setText(temp);
     }
 }

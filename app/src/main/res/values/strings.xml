@@ -15,4 +15,5 @@
     <string name="efficiency">Efficiency</string>
     <string name="calculate">Calculate</string>
     <string name="voltage_at_i_rat">Voltage at I(rat)</string>
+    <string name="poles">Number of Poles</string>
 </resources>
