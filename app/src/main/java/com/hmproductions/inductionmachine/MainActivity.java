@@ -1,12 +1,15 @@
 package com.hmproductions.inductionmachine;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -91,6 +94,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.calculate_action) {
             calculateParameters();
+
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null && getCurrentFocus() != null && getCurrentFocus().getWindowToken() != null) {
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
         }
 
         return super.onOptionsItemSelected(item);
@@ -111,10 +119,14 @@ public class MainActivity extends AppCompatActivity {
         noloadCurrent = Double.parseDouble(noLoadCurrentEditText.getText().toString());
         blockedVoltage = Double.parseDouble(blockedVoltageEditText.getText().toString());
 
-        // Calculating parameters
-        blockedCurrent /= Math.sqrt(3);
-        noloadCurrent /= Math.sqrt(3);
-        
+        if (configurationRadioGroup.getCheckedRadioButtonId() == R.id.delta_radioButton) {
+            blockedCurrent /= Math.sqrt(3);
+            noloadCurrent /= Math.sqrt(3);
+        } else {
+            blockedVoltage /= Math.sqrt(3);
+            noloadVoltage /= Math.sqrt(3);
+        }
+
         // Taking frequency as 50Hz
         wS = 200 / poles;
 
@@ -131,6 +143,11 @@ public class MainActivity extends AppCompatActivity {
         x1 = x2 = Xbr / 2;
         Xm = Xnl - x1;
         X2 = Xm + x2;
+
+        if (Rbr < statorResistance * 1.2) {
+            Toast.makeText(this, "Infeasible data", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         r1 = statorResistance;
         r2 = (Rbr - r1) * Math.pow(X2 / Xm, 2);

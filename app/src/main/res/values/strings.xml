@@ -16,4 +16,8 @@
     <string name="calculate">Calculate</string>
     <string name="voltage_at_i_rat">Voltage at I(rat)</string>
     <string name="poles">Number of Poles</string>
+    <string name="shaft_torque">Shaft Torque</string>
+    <string name="magnetizing_reactance">Magnetizing Reactance</string>
+    <string name="rotor_reactance">Rotor Reactance</string>
+    <string name="rotor_resistance">Rotor Resistance</string>
 </resources>
