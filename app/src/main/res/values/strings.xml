@@ -20,4 +20,7 @@
     <string name="magnetizing_reactance">Magnetizing Reactance</string>
     <string name="rotor_reactance">Rotor Reactance</string>
     <string name="rotor_resistance">Rotor Resistance</string>
+    <string name="about">About</string>
+    <string name="no_value">: -</string>
+    <string name="about_text">This app can calculate induction machine parameters, namely rotor resistance, rotor reactance, shaft torque and efficiency from name plate details. It has been published on Google Play Store and has reached rating of 5.0/5.0 stars. \n\nTeam Members :-\n Harsh Mahajan\n Aaryan Shah \n Surya Narayan Acharya\n\nA blocked rotor test is conducted on an induction motor. It is also known as short circuit test, locked rotor test or stalled torque test. From this test, short circuit current at normal voltage, power factor on short circuit, total leakage reactance, and starting torque of the motor can be found. The test is conducted at low voltage because if the applied voltage was normal voltage then the current through the stator windings would be high enough to overheat the windings and damage them.[4] The blocked rotor torque test is not performed on wound-rotor motors because the starting torque can be varied as desired. However, a blocked rotor current test is conducted on squirrel cage rotor motors.</string>
 </resources>

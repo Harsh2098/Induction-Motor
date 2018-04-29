@@ -1,415 +1,433 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="4dp">
+    android:layout_margin="2dp"
+    android:background="#FFF0F5"
+    android:orientation="vertical">
 
-    <RadioGroup
-        android:id="@+id/config_radioGroup"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="4dp">
+        android:orientation="vertical">
 
-        <RadioButton
-            android:id="@+id/delta_radioButton"
-            android:layout_width="0dp"
+        <RadioGroup
+            android:id="@+id/config_radioGroup"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/delta"
-            android:textSize="20sp" />
+            android:orientation="horizontal"
+            android:padding="4dp">
 
-        <RadioButton
-            android:id="@+id/star_radioButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/star"
-            android:textSize="20sp" />
+            <RadioButton
+                android:id="@+id/delta_radioButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/delta"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    </RadioGroup>
+            <RadioButton
+                android:id="@+id/star_radioButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/star"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:baselineAligned="false"
-        android:orientation="horizontal">
+        </RadioGroup>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
-            <android.support.design.widget.TextInputLayout
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <android.support.design.widget.TextInputLayout
 
-                <EditText
-                    android:id="@+id/ratedVoltage_editText"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/ratedVoltage_editText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/rated_voltage"
+                        android:inputType="number"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:text="415"
+                        android:textSize="16sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/ratedCurrent_editText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/rated_current"
+                        android:inputType="numberDecimal"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:text="18.4"
+                        android:textSize="16sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/ratedSpeed_editText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/rated_speed"
+                        android:inputType="number"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:text="1500"
+                        android:textSize="16sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/poles_editText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/poles"
+                        android:inputType="numberDecimal"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:text="4"
+                        android:textSize="16sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/statorResistance_editText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/stator_resistance"
+                        android:inputType="numberDecimal"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:text="0.7"
+                        android:textSize="16sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/slip_editText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/slip"
+                        android:inputType="numberDecimal"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:text="0.0181"
+                        android:textSize="16sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/rated_voltage"
-                    android:inputType="number"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:text="415"
-                    android:textSize="16sp" />
+                    android:layout_marginBottom="4dp"
+                    android:gravity="center"
+                    android:text="@string/no_load_test"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-            </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
 
-            <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/noLoadInput_editText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/input_power"
+                        android:inputType="number"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:text="488"
+                        android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/ratedCurrent_editText"
-                    android:layout_width="wrap_content"
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/noLoadCurrent_editText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/current"
+                        android:inputType="numberDecimal"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:text="5.8"
+                        android:textSize="16sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/rated_current"
-                    android:inputType="numberDecimal"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:text="18.4"
-                    android:textSize="16sp" />
+                    android:layout_marginBottom="4dp"
+                    android:gravity="center"
+                    android:text="@string/blocked_rotor_test"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-            </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
 
-            <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/blockedInput_editText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/input_power"
+                        android:inputType="number"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:text="510"
+                        android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/ratedSpeed_editText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/rated_speed"
-                    android:inputType="number"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:text="1500"
-                    android:textSize="16sp" />
+                </android.support.design.widget.TextInputLayout>
 
-            </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/blockedVoltage_editText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/voltage_at_i_rat"
+                        android:inputType="number"
+                        android:maxLength="30"
+                        android:maxLines="1"
+                        android:text="40"
+                        android:textSize="16sp" />
+
+                </android.support.design.widget.TextInputLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <android.support.design.widget.TextInputLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/poles_editText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/poles"
-                    android:inputType="numberDecimal"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:text="4"
-                    android:textSize="16sp" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/statorResistance_editText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/stator_resistance"
-                    android:inputType="numberDecimal"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:text="0.7"
-                    android:textSize="16sp" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/slip_editText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/slip"
-                    android:inputType="numberDecimal"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:text="0.0181"
-                    android:textSize="16sp" />
-
-            </android.support.design.widget.TextInputLayout>
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:weightSum="2">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/no_load_test"
-                android:textAllCaps="true"
+                android:layout_weight="2"
+                android:text="@string/shaft_torque"
                 android:textColor="@android:color/background_dark"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
-            <android.support.design.widget.TextInputLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/noLoadInput_editText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/input_power"
-                    android:inputType="number"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:text="488"
-                    android:textSize="16sp" />
-
-            </android.support.design.widget.TextInputLayout>
-
-            <android.support.design.widget.TextInputLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/noLoadCurrent_editText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/current"
-                    android:inputType="numberDecimal"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:text="5.8"
-                    android:textSize="16sp" />
-
-            </android.support.design.widget.TextInputLayout>
+            <TextView
+                android:id="@+id/shaftTorque_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/no_value"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/blocked_rotor_test"
-                android:textAllCaps="true"
+                android:layout_weight="2"
+                android:text="@string/magnetizing_reactance"
                 android:textColor="@android:color/background_dark"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
-            <android.support.design.widget.TextInputLayout
+            <TextView
+                android:id="@+id/magnetizingReactance_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/no_value"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        </LinearLayout>
 
-                <EditText
-                    android:id="@+id/blockedInput_editText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/input_power"
-                    android:inputType="number"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:text="510"
-                    android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
-            </android.support.design.widget.TextInputLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/rotor_reactance"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
 
-            <android.support.design.widget.TextInputLayout
+            <TextView
+                android:id="@+id/rotorReactance_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/no_value"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+        </LinearLayout>
 
-                <EditText
-                    android:id="@+id/blockedVoltage_editText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="@string/voltage_at_i_rat"
-                    android:inputType="number"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:text="40"
-                    android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
-            </android.support.design.widget.TextInputLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/rotor_resistance"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/rotorResistance_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/no_value"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/efficiency"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/efficiency_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/no_value"
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="@string/shaft_torque"
-            android:textColor="@android:color/background_dark"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/shaftTorque_textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:textColor="@android:color/background_dark"
-            android:textSize="18sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="@string/magnetizing_reactance"
-            android:textColor="@android:color/background_dark"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/magnetizingReactance_textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:textColor="@android:color/background_dark"
-            android:textSize="18sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="@string/rotor_reactance"
-            android:textColor="@android:color/background_dark"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/rotorReactance_textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:textColor="@android:color/background_dark"
-            android:textSize="18sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="@string/rotor_resistance"
-            android:textColor="@android:color/background_dark"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/rotorResistance_textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:textColor="@android:color/background_dark"
-            android:textSize="18sp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="@string/efficiency"
-            android:textColor="@android:color/background_dark"
-            android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/efficiency_textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:textColor="@android:color/background_dark"
-            android:textSize="18sp" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</ScrollView>

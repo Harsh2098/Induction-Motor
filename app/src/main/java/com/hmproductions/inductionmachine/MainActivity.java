@@ -1,6 +1,7 @@
 package com.hmproductions.inductionmachine;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -93,12 +94,20 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == R.id.calculate_action) {
+
+            if (configurationRadioGroup.getCheckedRadioButtonId() == -1) {
+                Toast.makeText(this, "Select Delta/Star connection", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
             calculateParameters();
 
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             if (imm != null && getCurrentFocus() != null && getCurrentFocus().getWindowToken() != null) {
                 imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
             }
+        } else if (item.getItemId() == R.id.about_action) {
+            startActivity(new Intent(this, AboutActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
@@ -145,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         X2 = Xm + x2;
 
         if (Rbr < statorResistance * 1.2) {
-            Toast.makeText(this, "Infeasible data", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Infeasible data as Rbr < 1.2 x r1", Toast.LENGTH_SHORT).show();
             return;
         }
 

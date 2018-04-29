@@ -8,4 +8,10 @@
         android:icon="@drawable/calculate_icon"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/about_action"
+        android:title="@string/about"
+        android:icon="@drawable/info_icon"
+        app:showAsAction="ifRoom"/>
+
 </menu>
